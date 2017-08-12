@@ -1,0 +1,33 @@
+/etc/profile.d/proxy.sh
+-------------------------------------------------------------
+# Export HTTP
+export http_proxy=http://proxy.local.lan:3128
+export HTTP_PROXY=http://proxy.local.lan:3128
+
+# Export HTTPS
+export https_proxy=http://proxy.local.lan:3128
+export HTTPS_PROXY=http://proxy.local.lan:3128
+
+# Export FTP
+export ftp_proxy=http://proxy.local.lan:3128
+export FTP_PROXY=http://proxy.local.lan:3128
+
+
+
+/etc/wgetrc
+-------------------------------------------------------------
+https_proxy = http://proxy.local.lan:3128/
+http_proxy = http://proxy.local.lan:3128/
+ftp_proxy = http://proxy.local.lan:3128/
+
+
+
+/etc/apt/apt.conf.d/99HttpProxy
+-------------------------------------------------------------
+Acquire::http::Proxy "http://proxy.local.lan:3128";
+Acquire::https::Proxy "http://proxy.local.lan:3128";
+Acquire::ftp::Proxy "http://proxy.local.lan:3128";
+Acquire::http::No-Cache "True";
+Acquire::http::Pipeline-Depth "0";
+Acquire::BrokenProxy "true";
+
